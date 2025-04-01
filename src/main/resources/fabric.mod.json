@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "remove-speed-cap",
+  "id": "TooFaster",
   "version": "${version}",
-  "name": "Remove Speed Cap",
+  "name": "TooFaster",
   "description": "Removes player movement speed limits",
-  "authors": ["You"],
+  "authors": "Carter Tollman",
   "contact": {},
   "license": "MIT",
   "environment": "*",

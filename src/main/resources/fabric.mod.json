@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "remove-speed-cap",
+  "version": "${version}",
+  "name": "Remove Speed Cap",
+  "description": "Removes player movement speed limits",
+  "authors": ["You"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "mixins": [
+    "removespeedcap.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "1.21.4",
+    "java": ">=17"
+  }
+}

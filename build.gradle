@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.8.2'
+    id 'fabric-loom' version '1.11.3'
     id 'maven-publish'
 }
 
@@ -12,24 +12,29 @@ base {
 
 repositories {
     mavenCentral()
-    maven { url "https://maven.fabricmc.net/" } // Fabric Maven
-    maven { url "https://libraries.minecraft.net/" } // Mojang Maven
+    maven { url "https://maven.fabricmc.net/" }
+    maven { url "https://libraries.minecraft.net/" }
 }
 
 dependencies {
+    // Uses the minecraft_version from gradle.properties (1.21.10)
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    // Correct Fabric API dependency for 1.21.4
+    // Uses the yarn_mappings from gradle.properties
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
 
 processResources {
     inputs.property "version", project.version
+    // Inject the Minecraft version into the JSON to ensure dependency matching
+    inputs.property "minecraft_version", project.minecraft_version
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        expand "version": project.version,
+                "minecraft_version": project.minecraft_version
     }
 }
 
@@ -42,6 +47,10 @@ java {
 
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
+
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 jar {

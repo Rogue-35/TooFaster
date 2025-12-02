@@ -1,19 +1,31 @@
 {
   "schemaVersion": 1,
-  "id": "TooFaster",
+  "id": "removespeedcap",
   "version": "${version}",
-  "name": "TooFaster",
-  "description": "Removes player movement speed limits",
-  "authors": ["Carter Tollman"],
-  "contact": {},
-  "license": "MIT",
+  "name": "Remove Speed Cap",
+  "description": "Removes the server-side speed limits for players and vehicles.",
+  "authors": [
+    "Me"
+  ],
+  "contact": {
+    "homepage": "https://carettollman.dev",
+    "sources": "https://github.com/Rogue-35/TooFaster"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/removespeedcap/icon.png",
   "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.example.removespeedcap.RemoveSpeedCapMod"
+    ]
+  },
   "mixins": [
     "removespeedcap.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.16.10",
-    "minecraft": "1.21.5",
-    "java": ">=21"
+    "minecraft": ">=1.21.10",
+    "java": ">=21",
+    "fabric-api": "*"
   }
 }
